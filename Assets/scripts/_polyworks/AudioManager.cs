@@ -4,23 +4,11 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
-	public class AudioManager : MonoBehaviour
+	public class AudioManager : Singleton<AudioManager>
 	{
-
-		private AudioManager _instance;
-
-		public AudioManager Instance() 
-		{
-			if(_instance == null) 
-			{
-				_instance = new AudioManager();
-			}
-			return _instance;
-		}
-
 		public void Init() 
 		{
-
+			Debug.Log("audio manager init");
 		}
 	
 		void Update () 
