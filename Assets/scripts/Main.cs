@@ -5,7 +5,6 @@ using Polyworks;
 
 public class Main : MonoBehaviour 
 {
-
 	private AudioManager _audioManager;
 
 	// Use this for initialization
@@ -15,6 +14,7 @@ public class Main : MonoBehaviour
 		if(_audioManager)
 		{
 			_audioManager.Init();
+			_audioManager.Play();
 		}	
 	}
 	

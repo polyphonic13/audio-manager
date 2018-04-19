@@ -1,3 +1,5 @@
+*.wav
+*.wav.meta
 *.blend1
 *.blend1.meta
 *.blend2
