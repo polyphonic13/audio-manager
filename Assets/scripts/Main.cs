@@ -1,12 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using Polyworks;
 
 public class Main : MonoBehaviour 
 {
 	private AudioManager _audioManager;
 
+	public void Next()
+	{
+		AudioManager.Instance.Next();
+		// _audioManager.Next();
+	}
+
+	public void Prev()
+	{
+		AudioManager.Instance.Previous();
+		// _audioManager.Previous();
+	}
 	// Use this for initialization
 	void Awake () 
 	{
@@ -15,7 +27,9 @@ public class Main : MonoBehaviour
 		{
 			_audioManager.Init();
 			_audioManager.Play();
-		}	
+		}
+
+		Debug.Log(Input.isGyroAvailable);
 	}
 	
 	// Update is called once per frame
@@ -23,4 +37,5 @@ public class Main : MonoBehaviour
 	{
 
 	}
+
 }
