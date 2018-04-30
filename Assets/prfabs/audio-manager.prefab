@@ -19,8 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4849531038657054}
-  - component: {fileID: 114994965018244054}
-  - component: {fileID: 82965402744359738}
+  - component: {fileID: 114539339744642270}
   m_Layer: 0
   m_Name: audio-manager
   m_TagString: Untagged
@@ -41,87 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82965402744359738
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596135901347880}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &114994965018244054
+--- !u!114 &114539339744642270
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,8 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAutoAdvance: 1
-  mixer: {fileID: 24100000, guid: c367c27c1c1471c43a99a7032b470dea, type: 2}
-  clips:
-  - {fileID: 8300000, guid: 4511808dfb47cd4468694593ae0ace14, type: 3}
-  - {fileID: 8300000, guid: 90e73508bc711c440bb83ce00d1030dc, type: 3}
-  - {fileID: 8300000, guid: e87cb3ad2d7e57d42bb6156075f65bfc, type: 3}
+  isCrossFade: 1
+  sources:
+  - {fileID: 82870305701039992, guid: 1367c3bd31202a0499b57c8475f92b54, type: 2}
+  - {fileID: 82119825560381146, guid: 8b9f16fdd3cb7bd478eb25b9ca36a422, type: 2}
+  - {fileID: 82001651819528752, guid: 03e5a1cef62d08c48b28886a51374310, type: 2}
+  - {fileID: 82420357940710930, guid: 46cb4666462c0624fbdf6db7f5822f3b, type: 2}

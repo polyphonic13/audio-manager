@@ -7,6 +7,7 @@
 	public class AudioManager : Singleton<AudioManager>
 	{
 		public bool isAutoAdvance;
+		public bool isCrossFade;
 		// public AudioClip[] clips;
 
 		public AudioSource[] sources;
@@ -16,9 +17,11 @@
 		private AudioSource _current;
 
 		private bool _isPlaying = false;
+
+
 		public void Init() 
 		{
-			// Debug.Log("audio manager init");
+			Debug.Log("audio manager init, sources.length = " + sources.Length);
 			// sources = gameObject.GetComponent<AudioSource>();
 			_current = sources[0];
 		}
@@ -127,7 +130,7 @@
 			}
 		}
 
-		public void Play(int index = 0, bool isCrossFade = false) 
+		public void Play(int index = 0) 
 		{
 			if(_current.isPlaying)
 			{
@@ -149,6 +152,11 @@
 				_current = sources[index];
 				_current.Play();
 				// sources[_index].Play();
+
+				if(isCrossFade)
+				{
+					FadeIn(_current);
+				}				
 				_isPlaying = true;
 			}
 		}
