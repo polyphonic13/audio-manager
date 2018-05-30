@@ -7,7 +7,7 @@ namespace Polyworks
     ///   Audio source that fades between clips instead of playing them immediately.
     /// </summary>
     [RequireComponent(typeof(AudioSource))]
-    public class FadingAudioSource : PolyBehaviour
+    public class AudioFader : PolyBehaviour
     {
         #region Fields
  
@@ -119,13 +119,13 @@ namespace Polyworks
         /// <param name="clip">Clip to fade in.</param>
         /// <param name="volume">Volume to fade to.</param>
         /// <param name="loop">Whether to loop the new clip, or not.</param>
-        public void Fade(AudioClip clip, float volume, bool loop)
+        public void Fade(AudioSource audioSource, AudioClip clip, float volume, bool loop)
         {
             if (clip == null || clip == this.audioSource.clip)
             {
                 return;
             }
- 
+            this.audioSource = audioSource;
             this.nextClip = clip;
             this.nextClipVolume = volume;
             this.nextClipLoop = loop;
@@ -171,8 +171,8 @@ namespace Polyworks
  
         private void Awake()
         {
-            this.audioSource = this.audio;
-            this.audioSource.volume = 0f;
+            // this.audioSource = this.audio;
+            // this.audioSource.volume = 0f;
         }
  
         private void FadeToNextClip()
