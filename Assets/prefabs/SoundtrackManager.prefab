@@ -51,8 +51,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84914f6698e34044f83c990c87021794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLogOn: 0
-  sceneClips: []
+  sceneClips:
+  - scene: soundtrack-test
+    maxTracks: 3
+    clips:
+    - {fileID: 8300000, guid: 393570c81f3a1a846994ddc0eaf346b4, type: 3}
+    - {fileID: 8300000, guid: 90e73508bc711c440bb83ce00d1030dc, type: 3}
+    - {fileID: 8300000, guid: e87cb3ad2d7e57d42bb6156075f65bfc, type: 3}
+    - {fileID: 8300000, guid: 2997f186feb542a4e850a2fa9e7ae773, type: 3}
+    - {fileID: 8300000, guid: 9c39bcfd18af601438e10e3228bfcd37, type: 3}
+    - {fileID: 8300000, guid: 5c03f1649bf996e44a1e377e126fa03d, type: 3}
+  - scene: 
+    maxTracks: 0
+    clips: []
+  - scene: 
+    maxTracks: 0
+    clips: []
+  - scene: 
+    maxTracks: 0
+    clips: []
   sources:
   - {fileID: 82964190143607846, guid: 06970ea362b95ef4a89f4965b95ccde8, type: 2}
   - {fileID: 82888524796354614, guid: 5799a5de8dc7b034b8c0921e41f8ef1c, type: 2}

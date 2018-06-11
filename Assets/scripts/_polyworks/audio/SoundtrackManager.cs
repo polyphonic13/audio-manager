@@ -4,16 +4,16 @@ namespace Polyworks
     using UnityEngine;
 
     [System.Serializable]
-    public struct SceneClips 
+    public struct SceneClipCollection 
     {
-        public string name;
+        public string scene;
         public int maxTracks;
         public AudioClip[] clips;
     }
 
-    public class SoundtrackManager: PolyBehaviour 
+    public class SoundtrackManager: Singleton<SoundtrackManager>
     {
-        public SceneClips[] sceneClips;
+        public SceneClipCollection[] sceneClipCollection;
 
         public AudioSource[] sources;
         public int defaultMaxTracks;
@@ -22,7 +22,7 @@ namespace Polyworks
 
         public float replaceThreshold;
 
-        private SceneClips currentClips;
+        private SceneClipCollection currentClips;
 
         private int currentSource;
 
@@ -42,7 +42,7 @@ namespace Polyworks
         public void InitScene(string scene, bool isAutoStart = true)
         {
             isSceneStarted = isPlaying = isSceneWithTracks = false;
-            currentClips = getSceneClips(scene);
+            currentClips = GetSceneClipCollection(scene);
 
             if(currentClips.clips.Length > 0)
             {
@@ -96,17 +96,18 @@ namespace Polyworks
             // check for odds of adding additional track
         }
 
-        private SceneClips getSceneClips(string scene)
+        private SceneClipCollection GetSceneClipCollection(string scene)
         {
-            foreach(SceneClips clips in sceneClips)
+
+            foreach(SceneClipCollection clipCollection in sceneClipCollection)
             {
-                if(clips.name == scene)
+                if(clipCollection.scene == scene)
                 {
-                    return clips;
+                    return clipCollection;
                 }
             }
 
-            return new SceneClips();
+            return new SceneClipCollection();
         }
 
         private void OnDestroy()
