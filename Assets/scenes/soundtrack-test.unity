@@ -117,21 +117,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClips.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].clips.Array.size
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4743663505442832, guid: 7ef3a0a018f673a48895b68b33efa1d1, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -163,66 +148,6 @@ Prefab:
     - target: {fileID: 4743663505442832, guid: 7ef3a0a018f673a48895b68b33efa1d1, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].scene
-      value: soundtrack-test
-      objectReference: {fileID: 0}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].maxTracks
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].clips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 90e73508bc711c440bb83ce00d1030dc, type: 3}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].clips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 4511808dfb47cd4468694593ae0ace14, type: 3}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].clips.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 393570c81f3a1a846994ddc0eaf346b4, type: 3}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].clips.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: e87cb3ad2d7e57d42bb6156075f65bfc, type: 3}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].clips.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 2997f186feb542a4e850a2fa9e7ae773, type: 3}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].clips.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: f29949f1a2e2d0342be4d1ca84d920b0, type: 3}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: sceneClipCollection.Array.data[0].clips.Array.data[6]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9c39bcfd18af601438e10e3228bfcd37, type: 3}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: defaultMaxTracks
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: nearEndThreshold
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114142818075941114, guid: 7ef3a0a018f673a48895b68b33efa1d1,
-        type: 2}
-      propertyPath: replaceThreshold
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ef3a0a018f673a48895b68b33efa1d1, type: 2}

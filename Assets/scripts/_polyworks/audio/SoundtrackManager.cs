@@ -4,16 +4,20 @@ namespace Polyworks
     using UnityEngine;
 
     [System.Serializable]
-    public struct SceneClipCollection 
+    public struct Song 
     {
-        public string scene;
-        public int maxTracks;
+        public string name;
+        public int numMaxTracks;
+        public int numStartingTracks;
+
+        public bool isStartRandomized;
+
         public AudioClip[] clips;
     }
 
     public class SoundtrackManager: Singleton<SoundtrackManager>
     {
-        public SceneClipCollection[] sceneClipCollection;
+        public Song[] songs;
 
         public AudioSource[] sources;
         public int defaultMaxTracks;
@@ -22,15 +26,15 @@ namespace Polyworks
 
         public float replaceThreshold;
 
-        private SceneClipCollection currentClips;
+        private Song currentSong;
 
         private int currentSource;
 
-        private bool isSceneWithTracks;
+        private bool isSongWithTracks;
 
         private bool isActive;
 
-        private bool isSceneStarted;
+        private bool isSongStarted;
 
         private bool isPlaying;
 
@@ -39,41 +43,51 @@ namespace Polyworks
 
         }
 
-        public void InitScene(string scene, bool isAutoStart = true)
+
+        public void InitSong(string name, bool isAutoStart = true)
         {
-            isSceneStarted = isPlaying = isSceneWithTracks = false;
-            currentClips = GetSceneClipCollection(scene);
+            isSongStarted = isPlaying = isSongWithTracks = false;
+            currentSong = GetSceneClipCollection(name);
 
-            if(currentClips.clips.Length > 0)
+            if(currentSong.clips.Length == 0)
             {
-                isSceneWithTracks = true;
+                return;
+            }
 
-                if(isAutoStart)
-                {
-                    Play();
-                }
+            isSongWithTracks = true;
 
+            if(isAutoStart)
+            {
+                Play();
             }
         }
 
         public void Play()
         {
-            if(isSceneStarted)
+            if(isSongStarted)
             {
                 return;
             }
-            isSceneStarted = true;
+            isSongStarted = isPlaying = true;
 
         }
 
         public void Pause()
         {
-
+            if(!isPlaying)
+            {
+                return;
+            }
+            isPlaying = false;
         }
 
         public void Resume()
         {
-
+            if(!isSongStarted || isPlaying)
+            {
+                return;
+            }
+            isPlaying = true;
         }
 
         public void Clear()
@@ -83,7 +97,7 @@ namespace Polyworks
 
         private void Update()
         {
-            if(isActive && isSceneWithTracks)
+            if(isActive && isSongWithTracks)
             {
 
             }
@@ -96,18 +110,17 @@ namespace Polyworks
             // check for odds of adding additional track
         }
 
-        private SceneClipCollection GetSceneClipCollection(string scene)
+        private Song GetSceneClipCollection(string name)
         {
-
-            foreach(SceneClipCollection clipCollection in sceneClipCollection)
+            foreach(Song song in songs)
             {
-                if(clipCollection.scene == scene)
+                if(song.name == name)
                 {
-                    return clipCollection;
+                    return song;
                 }
             }
 
-            return new SceneClipCollection();
+            return new Song();
         }
 
         private void OnDestroy()

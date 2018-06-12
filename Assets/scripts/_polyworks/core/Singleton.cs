@@ -1,6 +1,6 @@
 ﻿namespace Polyworks {
 	using UnityEngine;
-	public class Singleton<T>: MonoBehaviour where T: MonoBehaviour {
+	public class Singleton<T>: PolyBehaviour where T: PolyBehaviour {
 		protected static T instance;
 		
 		public static T Instance {
