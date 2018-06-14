@@ -28,8 +28,6 @@ public class Main : MonoBehaviour
 			_audioManager.Init();
 			_audioManager.Play();
 		}
-
-		Debug.Log(Input.isGyroAvailable);
 	}
 	
 	// Update is called once per frame
