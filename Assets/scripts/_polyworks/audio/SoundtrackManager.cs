@@ -4,13 +4,21 @@ namespace Polyworks
     using UnityEngine;
 
     [System.Serializable]
+    public struct Track 
+    {
+        public AudioClip clip;
+        public bool isFading;
+        public bool isPlaying;
+    }
+
+    [System.Serializable]
     public struct Song 
     {
         public string name;
         public int numMaxTracks;
         public int numStartingTracks;
         public bool isRandomized;
-        public AudioClip[] clips;
+        public Track[] tracks;
     }
 
     public class SoundtrackManager: Singleton<SoundtrackManager>
@@ -18,7 +26,6 @@ namespace Polyworks
         #region public members
         public Song[] songs;
         public AudioSource[] sources;
-        public int defaultMaxTracks = 3;
         public float nearEndThreshold = 5.0f;
         public float replaceThreshold = 0.75f;
         public float nextTrackThreshold = 1.0f;
@@ -26,9 +33,9 @@ namespace Polyworks
 
         #region private members
         private Song currentSong;
-        private List<bool> playingClips;
+        private List<bool> playingTracks;
         private float timeSinceLastTrackAdd = 0;
-        private int currentClipIndex = -1;
+        private int currentTrackIndex = -1;
         private int currentSourceIndex = -1;
         private bool isSongWithTracks = false;
         private bool isActive = false;
@@ -42,14 +49,14 @@ namespace Polyworks
             isSongStarted = isPlaying = isSongWithTracks = false;
             currentSong = GetSong(name);
 
-            if(currentSong.clips.Length == 0)
+            if(currentSong.tracks.Length == 0)
             {
                 return;
             }
 
             isSongWithTracks = true;
 
-            InitPlayingClips();
+            InitPlayingTracks();
 
             if(isAutoStart)
             {
@@ -64,7 +71,7 @@ namespace Polyworks
                 return;
             }
 
-            StartNextClip();
+            StartNextTrack();
         }
 
         public void Pause()
@@ -85,6 +92,18 @@ namespace Polyworks
             isPlaying = true;
         }
 
+        public void AddTrack(int index = -1)
+        {
+            if(index > -1)
+            {
+                // add specific track
+            }
+            else
+            {
+                // add a new, random track
+            }
+        }
+
         public void Clear()
         {
             if(currentSourceIndex > -1 && sources[currentSourceIndex].isPlaying)
@@ -92,7 +111,7 @@ namespace Polyworks
                 sources[currentSourceIndex].Stop();
             }
             isPlaying = isSongWithTracks = isSongStarted = isActive = false;
-            currentClipIndex = currentSourceIndex = -1;
+            currentTrackIndex = currentSourceIndex = -1;
         }
         #endregion
 
@@ -112,13 +131,13 @@ namespace Polyworks
             // check for odds of adding additional track
         }
 
-        private void InitPlayingClips()
+        private void InitPlayingTracks()
         {
-            playingClips = new List<bool>();
-
-            foreach(AudioClip clip in currentSong.clips)
+            foreach(Track track in currentSong.tracks)
             {
-                playingClips.Add(false);
+                track.isPlaying = false;
+                track.isFading = false;
+                playingTracks.Add(false);
             }
         }
 
@@ -134,20 +153,20 @@ namespace Polyworks
             return new Song();
         }
 
-        private void StartNextClip()
+        private void StartNextTrack(int trackIndex = -1)
         {
-            currentSourceIndex = GetCurrentSourceIndex(sources.Length);
-            currentClipIndex = GetCurrentClipIndex(currentSong);
+            currentSourceIndex = GetNextSourceIndex(sources.Length);
+            currentTrackIndex = GetNexttTrackIndex(currentSong, trackIndex);
 
             AudioSource source = sources[currentSourceIndex];
 
-            source.clip = currentSong.clips[currentClipIndex];
+            source.clip = currentSong.tracks[currentTrackIndex];
             source.Play();
 
-            playingClips[currentClipIndex] = true;
+            playingTracks[currentTrackIndex] = true;
         }
 
-        private int GetCurrentSourceIndex(int arrayLength)
+        private int GetNextSourceIndex(int arrayLength)
         {
             int index = 0;
             if(currentSourceIndex < arrayLength - 1)
@@ -157,20 +176,31 @@ namespace Polyworks
             return index;
         }
 
-        private int GetCurrentClipIndex(Song song)
+        private int GetNexttTrackIndex(Song song, int trackIndex = -1)
         {
             int index = 0;
 
-            if(song.isRandomized)
+            if(trackIndex > -1)
+            {
+                // specific track already playing
+                if(playingTracks[trackIndex])
+                {
+                    return -1;
+                }
+
+                currentTrackIndex = trackIndex;
+                return currentTrackIndex;
+            }
+            else if(song.isRandomized)
             {
                 int lastIndex = index;
 
-                while(currentClipIndex == lastIndex)
+                while(currentTrackIndex == lastIndex)
                 {
-                    index = Random.Range(0, song.clips.Length);
+                    index = Random.Range(0, song.tracks.Length);
                 }
             }
-            else if(currentClipIndex < song.clips.Length - 1)
+            else if(currentTrackIndex < song.tracks.Length - 1)
             {
                 index++;
             }
