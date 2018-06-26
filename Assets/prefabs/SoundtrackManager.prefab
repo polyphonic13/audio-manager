@@ -56,18 +56,30 @@ MonoBehaviour:
   - name: first
     numMaxTracks: 3
     numStartingTracks: 2
-    isStartRandomized: 1
-    clips:
-    - {fileID: 8300000, guid: d44fff60acb171e4d8f63b826e12b5c5, type: 3}
-    - {fileID: 8300000, guid: 10202f54125baf24d927b7787e0e0e8b, type: 3}
-    - {fileID: 8300000, guid: 5ccce059a859501469a22e40f123063a, type: 3}
-    - {fileID: 8300000, guid: c378e33402441434e996212a5e3f6759, type: 3}
-    - {fileID: 8300000, guid: 4f91217699b0c004a98b3f6f875751f7, type: 3}
-    - {fileID: 8300000, guid: be2bcac73248849408b4cd25fd2bc3fd, type: 3}
+    isRandomized: 1
+    tracks:
+    - clip: {fileID: 8300000, guid: d44fff60acb171e4d8f63b826e12b5c5, type: 3}
+      isFading: 0
+      isPlaying: 0
+    - clip: {fileID: 8300000, guid: 10202f54125baf24d927b7787e0e0e8b, type: 3}
+      isFading: 0
+      isPlaying: 0
+    - clip: {fileID: 8300000, guid: 5ccce059a859501469a22e40f123063a, type: 3}
+      isFading: 0
+      isPlaying: 0
+    - clip: {fileID: 8300000, guid: c378e33402441434e996212a5e3f6759, type: 3}
+      isFading: 0
+      isPlaying: 0
+    - clip: {fileID: 8300000, guid: 4f91217699b0c004a98b3f6f875751f7, type: 3}
+      isFading: 0
+      isPlaying: 0
+    - clip: {fileID: 8300000, guid: be2bcac73248849408b4cd25fd2bc3fd, type: 3}
+      isFading: 0
+      isPlaying: 0
   sources:
   - {fileID: 82964190143607846, guid: 06970ea362b95ef4a89f4965b95ccde8, type: 2}
   - {fileID: 82888524796354614, guid: 5799a5de8dc7b034b8c0921e41f8ef1c, type: 2}
   - {fileID: 82118617965089850, guid: 1b7a8ef1387f5204cb7a82f6e2b28032, type: 2}
-  defaultMaxTracks: 3
   nearEndThreshold: 1
   replaceThreshold: 0.1
+  nextTrackThreshold: 1

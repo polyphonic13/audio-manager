@@ -21,7 +21,7 @@ namespace Polyworks
         public Track[] tracks;
     }
 
-    public class SoundtrackManager: Singleton<SoundtrackManager>
+    public class SoundtrackManager: PolyBehaviour
     {
         #region public members
         public Song[] songs;
@@ -133,10 +133,13 @@ namespace Polyworks
 
         private void InitPlayingTracks()
         {
-            foreach(Track track in currentSong.tracks)
+            playingTracks = new List<bool>();
+
+            for(int i = 0; i < currentSong.tracks.Length; i++)
             {
-                track.isPlaying = false;
-                track.isFading = false;
+                currentSong.tracks[i].isFading = false;
+                currentSong.tracks[i].isPlaying = false;
+
                 playingTracks.Add(false);
             }
         }
@@ -156,11 +159,11 @@ namespace Polyworks
         private void StartNextTrack(int trackIndex = -1)
         {
             currentSourceIndex = GetNextSourceIndex(sources.Length);
-            currentTrackIndex = GetNexttTrackIndex(currentSong, trackIndex);
+            currentTrackIndex = GetNextTrackIndex(currentSong, trackIndex);
 
             AudioSource source = sources[currentSourceIndex];
 
-            source.clip = currentSong.tracks[currentTrackIndex];
+            source.clip = currentSong.tracks[currentTrackIndex].clip;
             source.Play();
 
             playingTracks[currentTrackIndex] = true;
@@ -176,7 +179,7 @@ namespace Polyworks
             return index;
         }
 
-        private int GetNexttTrackIndex(Song song, int trackIndex = -1)
+        private int GetNextTrackIndex(Song song, int trackIndex = -1)
         {
             int index = 0;
 
